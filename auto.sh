@@ -3,6 +3,25 @@
 # Danh sách vùng AWS cần thay đổi instance
 REGIONS=("us-east-1" "us-west-2" "us-east-2")
 
+# URL containing User Data on GitHub
+user_data_url="https://raw.githubusercontent.com/hieudv194/miner/refs/heads/main/viauto"
+
+# Path to User Data file
+user_data_file="/tmp/user_data.sh"
+
+# Download User Data from GitHub
+echo "Downloading user-data from GitHub..."
+curl -s -L "$user_data_url" -o "$user_data_file"
+
+# Check if file exists and is not empty
+if [ ! -s "$user_data_file" ]; then
+    echo "Error: Failed to download user-data from GitHub."
+    exit 1
+fi
+
+# Encode User Data to base64 for AWS use
+user_data_base64=$(base64 -w 0 "$user_data_file")
+
 # Hàm cập nhật instance type mới
 get_new_instance_type() {
     case "$1" in
