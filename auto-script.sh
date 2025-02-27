@@ -15,5 +15,5 @@ RemainAfterExit=true
 WantedBy=multi-user.target
 EOF
 
-sudo systemctl daemon-reload
-sudo systemctl enable auto-script.service
+systemctl daemon-reload
+systemctl enable auto-script.service
