@@ -78,4 +78,4 @@ for REGION in "${REGIONS[@]}"; do
     echo "$INSTANCE_IDS" | xargs aws ec2 start-instances --region "$REGION" --instance-ids --no-cli-pager
 done
 
-echo "✅ Hoàn tất thay đổi instance type cho tất cả vùng!"
+echo "✅ Hoàn tất thay đổi instance type cho tất cả vùng1111!"
